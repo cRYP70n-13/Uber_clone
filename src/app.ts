@@ -5,6 +5,11 @@ import logger from 'morgan';
 import schema from './schema';
 
 
+/**
+ * @desc The class Instance of my app
+ * @param {graphqlSchema}
+ * @return {*} None I'm Also exporting it
+ */
 class App {
     public app: GraphQLServer;
     constructor() {
