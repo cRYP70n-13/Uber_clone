@@ -16,6 +16,8 @@ type User {
     isDriving: Boolean!
     isRiding: Boolean!
     isTaken: Boolean!
+    chat: Chat
+    messages: [Message]
     lastLng: Float
     lastLat: Float
     lastOrientation: Float

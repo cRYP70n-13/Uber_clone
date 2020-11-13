@@ -7,9 +7,13 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+    ManyToOne,
+    OneToMany,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from 'typeorm';
+import Chat from './Chat';
+import Message from './Message';
 
 /**
  * The Number of times our password should be hashed
@@ -72,6 +76,12 @@ class User extends BaseEntity {
 	get fullName(): string {
 		return `${this.firstName} ${this.lastName}`;
 	}
+
+    @ManyToOne(type => Chat, chat => chat.participants)
+    chat: Chat;
+
+    @OneToMany(type => Message, message => message.user)
+    messages: Message[];
 
 	@BeforeInsert()
 	@BeforeUpdate()
