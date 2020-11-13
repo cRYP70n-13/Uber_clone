@@ -14,6 +14,9 @@ import {
 } from 'typeorm';
 import Chat from './Chat';
 import Message from './Message';
+import Verification from './Verification';
+import Ride from './Ride';
+
 
 /**
  * The Number of times our password should be hashed
@@ -82,6 +85,16 @@ class User extends BaseEntity {
 
     @OneToMany(type => Message, message => message.user)
     messages: Message[];
+
+    @OneToMany(type => Verification, verification => verification.user)
+    verifications: Verification[];
+
+    @OneToMany(type => Ride, ride => ride.passenger)
+    ridesAsPassenger: Ride[];
+
+
+    @OneToMany(type => Ride, ride => ride.driver)
+    ridesAsDriver: Ride[];
 
 	@BeforeInsert()
 	@BeforeUpdate()
