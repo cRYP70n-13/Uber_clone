@@ -50,7 +50,7 @@ class User extends BaseEntity {
 	phoneNumber: string;
 
 	@Column({ type: 'boolean', default: false })
-	verifiedPhoneNumber: boolean;
+    verifiedPhoneNumber: boolean;
 
 	@Column({ type: 'text'})
 	profilePhoto: string;
@@ -73,7 +73,9 @@ class User extends BaseEntity {
 	@Column({ type: 'double precision', default: 0 })
 	lastOrientation: number;
 
-	@CreateDateColumn() createdAt: string;
+    @Column({ type: 'text', nullable: true})
+    fbId: string;@CreateDateColumn() createdAt: string;
+
 	@UpdateDateColumn() updatedAd: string;
 
 	get fullName(): string {

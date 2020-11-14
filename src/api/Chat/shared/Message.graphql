@@ -1,4 +1,4 @@
-type Messsage {
+type Message {
     id: Int!
     text: String!
     chat: Chat!

@@ -1,7 +1,5 @@
 type Chat {
     id: Int!
-    # Those are relations in GraphQL so here the messages column has many Messages
-    # and the participants column has many Users so they can chat with each others
     messages: [Message]!
     participants: [User]!
     createdAt: String!
