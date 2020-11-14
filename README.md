@@ -6,8 +6,8 @@ A clone for the Uber app in TypeScript NodeJS GraphQL Apollo React and Postgres
 
 ### Public Resolvers
 
-- [ ] Sign In / Sign Up with Facebook
-- [ ] Login with Email
+- [x] Sign In / Sign Up with Facebook
+- [x] Sing In with Email
 - [ ] Start Phone Number Verification
 - [ ] Complete Phone Number Verification
 - [ ] Sign Up with Email
@@ -16,6 +16,8 @@ A clone for the Uber app in TypeScript NodeJS GraphQL Apollo React and Postgres
 
 ### Private Resolvers
 
+- [ ] Generate JWT
+- [ ] Verify JWT
 - [ ] Verify Email
 - [ ] Get User Profile
 - [ ] Update The User Profile
