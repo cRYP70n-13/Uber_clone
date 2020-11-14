@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import logger from 'morgan';
 import schema from './schema';
+import decodeJWT from './utils/decodeJWT';
 
 
 /**
@@ -11,18 +12,30 @@ import schema from './schema';
  * @return {*} None I'm Also exporting it
  */
 class App {
-    public app: GraphQLServer;
-    constructor() {
-        this.app = new GraphQLServer({
-            schema
-        });
-        this.middlewares();
-    }
-    private middlewares = () : void => {
-        this.app.express.use(cors());
-        this.app.express.use(logger('dev'));
-        this.app.express.use(helmet({ contentSecurityPolicy: (process.env.NODE_ENV  === 'production' ? undefined : false)}));
-    }
+	public app: GraphQLServer;
+
+	constructor() {
+		this.app = new GraphQLServer({
+			schema
+		});
+		this.middlewares();
+	}
+
+	private middlewares = () : void => {
+		this.app.express.use(cors());
+		this.app.express.use(logger('dev'));
+		this.app.express.use(helmet({ contentSecurityPolicy: (process.env.NODE_ENV  === 'production' ? undefined : false)}));
+		this.app.express.use(this.jwt);
+	}
+
+	private jwt = async(req, res, next): Promise<void> => {
+		const token = req.get('X-JWT');
+		if (token) {
+			const user = await decodeJWT(token);
+			console.log(user);
+		}
+		next();
+	}
 }
 
 export default new App().app;
