@@ -1,12 +1,13 @@
 import { Resolvers } from '../../../types/resolvers';
-import { EmailSingInMutationArgs, EmailSignInResponse } from '../../../types/graph.d';
+import { EmailSignInMutationArgs, EmailSignInResponse } from '../../../types/graph.d';
 import User from '../../../entities/User';
+import createJWT from '../../../utils/createJWT';
 
 const resolvers: Resolvers = {
 	Mutation: {
 		EmailSignIn: async (
 			_,
-			args: EmailSingInMutationArgs
+			args: EmailSignInMutationArgs
 		): Promise<EmailSignInResponse> => {
 			const { email, password } = args;
 			try {
@@ -20,10 +21,11 @@ const resolvers: Resolvers = {
 				}
 				const checkPassword = user.comparePassword(password);
 				if (checkPassword) {
+                    const token = createJWT(user.id);
 					return {
 						ok: true,
 						error: null,
-						token: 'Comming Soon'
+						token
 					};
 				} else {
 					return {

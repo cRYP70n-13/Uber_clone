@@ -21,7 +21,7 @@ class App {
     private middlewares = () : void => {
         this.app.express.use(cors());
         this.app.express.use(logger('dev'));
-        this.app.express.use(helmet());
+        this.app.express.use(helmet({ contentSecurityPolicy: (process.env.NODE_ENV  === 'production' ? undefined : false)}));
     }
 }
 
