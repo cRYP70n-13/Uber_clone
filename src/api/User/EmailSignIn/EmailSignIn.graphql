@@ -6,5 +6,5 @@ type EmailSignInResponse {
 
 
 type Mutation {
-    EmailSingIn(email: String!, password: String!): EmailSignInResponse!
+    EmailSignIn(email: String!, password: String!): EmailSignInResponse!
 }
