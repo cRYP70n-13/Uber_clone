@@ -36,7 +36,7 @@ const handleAppStart = () => console.log(`Listening on port ${PORT}`)
 /**
  * @desc The database connection and the entryPoint of our server
  * @param {*} ConnectionOptions
- * @return {*} None 
+ * @return {*} None
  */
 createConnection(connectionsOptions)
     .then(() => {
