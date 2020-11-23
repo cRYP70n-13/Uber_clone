@@ -1,4 +1,3 @@
-
 import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
 import { FacebookConnectMutationArgs, FacebookConnectResponse } from '../../../types/graph';
